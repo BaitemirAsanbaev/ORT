@@ -69,6 +69,7 @@ const Profile = () => {
           <strong>User ID:</strong> {profileData.user}
         </p>
       </div>
+      <button onClick={()=>localStorage.clear()}>Logout</button>
     </div>
   );
 };

@@ -6,6 +6,9 @@ export const login = async ({ email, password }) => {
     console.log(email, password);
     const res = await axios.post(api + "users/login", { email, password });
     localStorage.setItem("token", res.data.access_token);
+    localStorage.setItem("firstname", res.data.firstname);
+    localStorage.setItem("lastname", res.data.lastname);
+    localStorage.setItem("email", res.data.email);
     console.log(res.data);
   } catch (e) {
     console.log(e);
