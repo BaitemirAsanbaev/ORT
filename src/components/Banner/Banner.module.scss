@@ -1,0 +1,19 @@
+// Banner.module.scss
+
+.bannerContainer {
+    width: 100%;
+    border-top: 2px solid #ddd; /* Top border */
+    border-bottom: 2px solid #ddd; /* Bottom border */
+    box-sizing: border-box;
+    margin: 150px 0;
+  }
+  
+  .bannerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  

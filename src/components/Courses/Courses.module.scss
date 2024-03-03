@@ -1,0 +1,27 @@
+// Courses.module.scss
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin: 0 auto;
+    .course {
+        margin-bottom: 20px;
+        padding: 30px;
+        margin: 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        border-radius: 20px;
+        width: 300px;
+        height: 300px;
+      }
+      
+      .courseTitle {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+      
+      
+}

@@ -1,0 +1,39 @@
+// Slider.module.scss
+
+.sliderContainer {
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .slider {
+    display: flex;
+    // overflow: hidden;
+    height: 100%;
+  }
+  
+  .sliderItem {
+    flex: 0 0 calc(100% / 3); // Adjusted to accommodate three slides
+    box-sizing: border-box;
+    padding: 0 10px;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+  
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+  
+  .caption {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    color: #fff;
+  
+    h3 {
+      margin: 0;
+    }
+  }
+  
+ 
+  

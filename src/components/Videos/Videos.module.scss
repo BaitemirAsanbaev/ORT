@@ -1,0 +1,31 @@
+// Videos.module.scss
+
+.videoContainer {
+    
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .video {
+    border-radius: 8px;
+    border: 1px solid #9b9b9b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .videoInfo {
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .videoTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .videoDescription {
+    color: #555;
+    font-size: 1rem;
+  }
+  
+  
