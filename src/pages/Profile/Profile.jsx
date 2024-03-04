@@ -19,12 +19,26 @@ const Profile = () => {
     specialization: "Computer Science",
     user: 123,
   });
-
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    firstname: "",
+    lastname: "",
+  });
   useEffect(() => {
     async function fetchProfile() {
       const res = await getProfile();
       console.log(res);
       setProfileData(res);
+      const storedEmail = localStorage.getItem("email");
+      const storedFirstname = localStorage.getItem("firstname");
+      const storedLastname = localStorage.getItem("lastname");
+
+      // Update userInfo state
+      setUserInfo({
+        email: storedEmail || "",
+        firstname: storedFirstname || "",
+        lastname: storedLastname || "",
+      });
     }
     fetchProfile();
   }, []);
@@ -33,8 +47,16 @@ const Profile = () => {
     <div className={styles.profileContainer}>
       <h2>User Profile</h2>
       <div>
+      <p>
+          <strong>Email:</strong> {userInfo.email}
+        </p>
+
         <p>
-          <strong>Language:</strong> {profileData.language}
+          <strong>Firstname:</strong> {userInfo.firstname}
+        </p>
+
+        <p>
+          <strong>Lastname:</strong> {userInfo.lastname}
         </p>
 
         <p>
