@@ -20,7 +20,7 @@ export default function Tests() {
       }
     }
     fetchTests();
-  }, []);
+  }, [params.id]);
 
   return (
     <div className={styles.testsContainer}>

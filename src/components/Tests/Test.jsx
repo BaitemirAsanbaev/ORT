@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Questions from '../Questions/Questions';
 import styles from './Tests.module.scss';
-import axios from 'axios';
 import { submitTest } from '../../services/requests';
 
 export default function Test({ data }) {
@@ -15,7 +14,7 @@ export default function Test({ data }) {
       ...prevSelectedAnswers,
       [questionId]: { answerId, isCorrect },
     }));
-
+    console.log(selectedAnswers);
     if (isCorrect) {
       setRightAnswersCount((prevCount) => prevCount + 1);
     }

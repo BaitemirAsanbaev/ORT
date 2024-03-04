@@ -19,7 +19,7 @@ export default function Videos() {
         }
       }
       fetchVideos();
-    }, []);
+    }, [params.id]);
   
     return (
       <div className={styles.videoContainer}>

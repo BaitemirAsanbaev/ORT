@@ -5,10 +5,6 @@ import logo from '../../assets/logo.png'
 
 const Navbar = () => {
   // Assume you have a function to check if the user is authenticated
-  const isAuthenticated = () => {
-    const token = localStorage.getItem('token');
-    return token !== null && token !== undefined;
-  };
 
   // Links to be displayed when the user is authenticated
   const links = [

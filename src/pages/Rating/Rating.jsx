@@ -36,7 +36,7 @@ const Rating = () => {
     });
 
     setFilteredResults(sorted);
-  }, [sortOrder]);
+  }, [sortOrder, filteredResults]);
 
   const handleTestNameFilter = (e) => {
     setFilterTestName(e.target.value);
