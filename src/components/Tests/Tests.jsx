@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getTests } from "../../services/requests";
+import { getTests } from "../../services/TestService";
 import styles from "./Tests.module.scss";
 import Test from "./Test";
 

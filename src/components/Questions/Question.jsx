@@ -1,7 +1,7 @@
 // Question.js
 
 import React, { useEffect, useState } from 'react';
-import { getQuestionAnswers } from '../../services/requests';
+import { getQuestionAnswers } from '../../services/TestService';
 import styles from './Question.module.scss';
 
 export default function Question({ data, onAnswerSelect }) {

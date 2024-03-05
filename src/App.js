@@ -9,20 +9,32 @@ import Profile from "./pages/Profile/Profile";
 import Rating from "./pages/Rating/Rating";
 import MyResults from "./pages/MyResults/MyResults";
 import TestPage from "./pages/TestPage/TestPage";
+import CreateTest from "./pages/CreateTest/CreateTest";
 function App() {
   const isAuthed = localStorage.getItem("token");
   return (
     <div className="App">
       {isAuthed ? (
         <>
-        <Navbar/>
+          <Navbar />
           <Routes>
             <Route index path="" element={<Home />} />
-            <Route index path="/profile" element={<Profile/>} />
             <Route path="/rating" element={<Rating />} />
-            <Route path="/my-results" element={<MyResults />} />
-            <Route path="/course/:id" element={<Course />} />
-            <Route path="/tests/:id" element={<TestPage />} />
+
+            {localStorage.getItem("role") === "Студент" ? (
+              <>
+                <Route path="/course/:id" element={<Course />} />
+                <Route path="/tests/:id" element={<TestPage />} />
+                <Route index path="/profile" element={<Profile />} />
+                <Route path="/my-results" element={<MyResults />} />
+              </>
+            ) : (
+              <>
+                <Route path="/create-test" element={<CreateTest />} />
+
+              </>
+            )}
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </>

@@ -1,7 +1,7 @@
 // Questions.js
 
 import React, { useEffect, useState } from 'react';
-import { getTestQuestions } from '../../services/requests';
+import { getTestQuestions } from '../../services/TestService';
 import styles from './Questions.module.scss';
 import Question from './Question';
 

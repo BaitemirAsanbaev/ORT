@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Questions from '../Questions/Questions';
 import styles from './Tests.module.scss';
-import { submitTest } from '../../services/requests';
+import { submitTest } from '../../services/TestService';
 
 export default function Test({ data }) {
   const [selectedAnswers, setSelectedAnswers] = useState({});
