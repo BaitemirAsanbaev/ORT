@@ -1,0 +1,11 @@
+.Course{
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+    button{
+        margin: 50px;
+    }
+}

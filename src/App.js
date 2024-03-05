@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./pages/Profile/Profile";
 import Rating from "./pages/Rating/Rating";
 import MyResults from "./pages/MyResults/MyResults";
-
+import TestPage from "./pages/TestPage/TestPage";
 function App() {
   const isAuthed = localStorage.getItem("token");
   return (
@@ -22,6 +22,7 @@ function App() {
             <Route path="/rating" element={<Rating />} />
             <Route path="/my-results" element={<MyResults />} />
             <Route path="/course/:id" element={<Course />} />
+            <Route path="/tests/:id" element={<TestPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </>
