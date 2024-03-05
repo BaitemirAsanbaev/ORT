@@ -14,7 +14,7 @@ export const getTests = async (id) => {
 };
 
 export const createTest = async (test, questions) => {
-    console.log(questions);
+  console.log(questions);
   try {
     const testRes = await axios.post(api + "tests/create", test, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -22,12 +22,18 @@ export const createTest = async (test, questions) => {
 
     questions.forEach((question) => {
       async function createQuestion() {
-        const questionRes = await axios.post(api + "questions/create", {
-          title: question.question,
-          test: testRes.data.id,
-        }, {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-          });
+        const questionRes = await axios.post(
+          api + "questions/create",
+          {
+            title: question.question,
+            test: testRes.data.id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         console.log(questionRes);
         question.answers.forEach((answer) => {
           async function createQuestion() {
@@ -39,7 +45,9 @@ export const createTest = async (test, questions) => {
                 question: questionRes.data.id,
               },
               {
-                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
               }
             );
             console.log(answerRes);
