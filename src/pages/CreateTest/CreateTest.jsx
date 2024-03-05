@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllCourses } from "../../services/requests";
 import { createTest } from "../../services/TestService";
+import styles from "./CreateTest.module.scss";
 
 export default function CreateTest() {
   const [title, setTitle] = useState("");
@@ -20,7 +21,7 @@ export default function CreateTest() {
     fetchCourses();
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Validate form data
@@ -37,20 +38,16 @@ export default function CreateTest() {
       return;
     }
 
-    // Send test creation request to the server
-    async function postTest(data) {
-      try {
-        const res = await createTest(data);
-        console.log(res);
-      } catch (e) {
-        console.log(e);
-      }
+    try {
+      await createTest({ title, description, course: courseId });
+      // Handle successful test creation (e.g., redirect)
+    } catch (e) {
+      console.log(e);
     }
-    postTest({ title, description, course: courseId });
   };
 
   return (
-    <div>
+    <div className={styles.createTest}>
       <h2>Create Test</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title*:</label>
@@ -77,6 +74,7 @@ export default function CreateTest() {
           required
         >
           <option value="">Select a course</option>
+
           {courses.map((course) => (
             <option key={course.id} value={course.id}>
               {course.title}
