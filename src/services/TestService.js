@@ -13,13 +13,46 @@ export const getTests = async (id) => {
   }
 };
 
-export const createTest = async (data) => {
+export const createTest = async (test, questions) => {
+    console.log(questions);
   try {
-    const res = await axios.post(api + "tests/create", data, {
+    const testRes = await axios.post(api + "tests/create", test, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
-    console.log(res.data);
-    return res.data;
+
+    questions.forEach((question) => {
+      async function createQuestion() {
+        const questionRes = await axios.post(api + "questions/create", {
+          title: question.question,
+          test: testRes.data.id,
+        }, {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          });
+        console.log(questionRes);
+        question.answers.forEach((answer) => {
+          async function createQuestion() {
+            const answerRes = await axios.post(
+              api + "questions/answer/create",
+              {
+                title: answer.answer,
+                correct: answer?.correct,
+                question: questionRes.data.id,
+              },
+              {
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+              }
+            );
+            console.log(answerRes);
+          }
+          createQuestion();
+        });
+      }
+
+      createQuestion();
+    });
+
+    console.log(testRes.data);
+    return "success";
   } catch (e) {
     console.log(e);
   }
