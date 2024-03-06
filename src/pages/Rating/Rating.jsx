@@ -35,17 +35,17 @@ const Rating = () => {
       return sortOrder === "desc" ? percentageB - percentageA : percentageA - percentageB;
     });
 
+    // Use the functional form of setFilteredResults
     setFilteredResults(sorted);
-  }, [sortOrder]);
+  }, [sortOrder]); 
 
   const handleTestNameFilter = (e) => {
     setFilterTestName(e.target.value);
     filterResults(e.target.value);
   };
-
   const filterResults = (testName) => {
     const filtered = testResults.filter((result) =>
-      result.test_name.includes(testName)
+      result.test_name.toLowerCase().includes(testName.toLowerCase())
     );
     setFilteredResults(filtered);
   };

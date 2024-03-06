@@ -36,7 +36,7 @@ export const createTest = async (test, questions) => {
         );
         console.log(questionRes);
         question.answers.forEach((answer) => {
-          async function createQuestion() {
+          async function createAnswer() {
             const answerRes = await axios.post(
               api + "questions/answer/create",
               {
@@ -52,7 +52,7 @@ export const createTest = async (test, questions) => {
             );
             console.log(answerRes);
           }
-          createQuestion();
+          createAnswer();
         });
       }
 
