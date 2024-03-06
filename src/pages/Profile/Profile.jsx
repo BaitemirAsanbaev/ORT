@@ -47,7 +47,7 @@ const Profile = () => {
     <div className={styles.profileContainer}>
       <h2>User Profile</h2>
       <div>
-      <p>
+        <p>
           <strong>Email:</strong> {userInfo.email}
         </p>
 
@@ -58,40 +58,45 @@ const Profile = () => {
         <p>
           <strong>Lastname:</strong> {userInfo.lastname}
         </p>
+        {localStorage.getItem("role") === "Учитель" ? (
+          <></>
+        ) : (
+          <>
+            <p>
+              <strong>Class:</strong> {profileData._class}
+            </p>
 
-        <p>
-          <strong>Class:</strong> {profileData._class}
-        </p>
+            <p>
+              <strong>Age:</strong> {profileData.age}
+            </p>
 
-        <p>
-          <strong>Age:</strong> {profileData.age}
-        </p>
+            <p>
+              <strong>Sex:</strong> {profileData.sex}
+            </p>
 
-        <p>
-          <strong>Sex:</strong> {profileData.sex}
-        </p>
+            <p>
+              <strong>Phone:</strong> {profileData.phone}
+            </p>
 
-        <p>
-          <strong>Phone:</strong> {profileData.phone}
-        </p>
+            <p>
+              <strong>School:</strong> {profileData.school}
+            </p>
 
-        <p>
-          <strong>School:</strong> {profileData.school}
-        </p>
+            <p>
+              <strong>University:</strong> {profileData.university}
+            </p>
 
-        <p>
-          <strong>University:</strong> {profileData.university}
-        </p>
+            <p>
+              <strong>Specialization:</strong> {profileData.specialization}
+            </p>
 
-        <p>
-          <strong>Specialization:</strong> {profileData.specialization}
-        </p>
-
-        <p>
-          <strong>User ID:</strong> {profileData.user}
-        </p>
+            <p>
+              <strong>User ID:</strong> {profileData.user}
+            </p>
+          </>
+        )}
       </div>
-      <button onClick={()=>localStorage.clear()}>Logout</button>
+      <button onClick={() => localStorage.clear()}>Logout</button>
     </div>
   );
 };

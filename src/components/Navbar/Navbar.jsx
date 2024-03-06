@@ -17,7 +17,8 @@ const Navbar = () => {
   const teacherLinks = [
     { label: 'Home', path: '/' },
     { label: 'Rating', path: '/rating' },
-    { label: 'Create test', path: '/create-test' }
+    { label: 'Create test', path: '/create-test' },
+    { label: 'Profile', path: '/profile' }
   ];
 
   const renderLinks = isStudent ? studentLinks : teacherLinks;
