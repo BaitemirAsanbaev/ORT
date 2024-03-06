@@ -1,46 +1,61 @@
 .createTest {
-    max-width: 1000px;
-    margin: 0 auto;
-    h2 {
-      margin-bottom: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px;
+  button {
+    background-color: #282828;
+    max-width: 300px;
+    margin: 5px auto;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
     }
-  
+
+    input,
+    textarea,
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5 10a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1v-8a1 1 0 011-1zM15 10a1 1 0 011 1v8a1 1 0 01-1 1h-4a1 1 0 01-1-1v-8a1 1 0 011-1z' clip-rule='evenodd'%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 14px;
+    }
+
+    
+  }
+
+  @media (max-width: 767px) {
     form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-  
-      label {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-  
       input,
       textarea,
       select {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        width: 100%; // Make inputs full width on small screens
       }
-  
-      select {
-        appearance: none;
-        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5 10a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1v-8a1 1 0 011-1zM15 10a1 1 0 011 1v8a1 1 0 01-1 1h-4a1 1 0 01-1-1v-8a1 1 0 011-1z' clip-rule='evenodd'%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        background-size: 14px;
-      }
-  
+
       button {
-        background-color: #282828;
-        max-width: 300px;
-        margin: 0 auto;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+        width: 100%; // Make button full width on small screens
       }
     }
   }
-  
+}

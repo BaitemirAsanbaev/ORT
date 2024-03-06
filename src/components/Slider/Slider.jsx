@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { useMediaQuery } from "react-responsive";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getNews } from "../../services/requests";
@@ -9,6 +10,7 @@ import styles from "./Slider.module.scss";
 
 const NewsSlider = () => {
   const [news, setNews] = useState([]);
+  const isMobile = useMediaQuery({ maxWidth: 768 }); // Adjust the max width based on your design needs
 
   useEffect(() => {
     async function fetchNews() {
@@ -22,12 +24,12 @@ const NewsSlider = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Display three slides per view
+    slidesToShow: isMobile ? 1 : 3, // Show one slide on mobile, three on larger screens
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
   };
-  console.log(news);
+
   return (
     <div className={styles.sliderContainer}>
       <h2>Latest News</h2>
@@ -37,7 +39,7 @@ const NewsSlider = () => {
             <img src={article.image} alt={article.title} />
             <div className={styles.caption}>
               <h3>{article.title}</h3>
-              <p>{article.description.slice(0,100)}</p>
+              <p>{article.description.slice(0, 100)}</p>
             </div>
           </div>
         ))}

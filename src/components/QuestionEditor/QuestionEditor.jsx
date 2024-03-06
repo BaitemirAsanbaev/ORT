@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from './QuestionEditor.module.scss'
 const QuestionEditor = ({ questions, setQuestions }) => {
   const handleQuestionChange = (index, event) => {
     const updatedQuestions = [...questions];
@@ -48,11 +48,11 @@ const QuestionEditor = ({ questions, setQuestions }) => {
   };
 
   return (
-    <div>
-      <h2>Questions</h2>
+    <div className={styles.QuestionEditor}>
+      <h2>Вопросы</h2>
       {questions.map((question, questionIndex) => (
         <div key={questionIndex}>
-          <label htmlFor={`question-${questionIndex}`}>Question:</label>
+          <label htmlFor={`question-${questionIndex}`}>Вопрос:</label>
           <input
             type="text"
             id={`question-${questionIndex}`}
@@ -71,7 +71,7 @@ const QuestionEditor = ({ questions, setQuestions }) => {
                 onChange={() => setCorrectAnswer(questionIndex, answerIndex)}
               />
               <label htmlFor={`answer-${questionIndex}-${answerIndex}`}>
-                Answer {answerIndex + 1}:
+                Ответ {answerIndex + 1}:
               </label>
               <input
                 type="text"
@@ -82,23 +82,23 @@ const QuestionEditor = ({ questions, setQuestions }) => {
               />
               {answerIndex + 1 < question.answers.length && (
                 <button type="button" onClick={() => removeAnswerOption(questionIndex, answerIndex)}>
-                  Remove Option
+                  Удалить вариант
                 </button>
               )}
             </div>
           ))}
           {question.answers.length < 6 && (
             <button type="button" onClick={() => addAnswerOption(questionIndex)}>
-              Add Answer Option
+              Добавить вариант
             </button>
           )}
           <button type="button" onClick={() => removeQuestion(questionIndex)}>
-            Remove Question
+            Удалить вопрос
           </button>
         </div>
       ))}
       <button type="button" onClick={addQuestion}>
-        Add Question
+        Добавить вопрос
       </button>
     </div>
   );

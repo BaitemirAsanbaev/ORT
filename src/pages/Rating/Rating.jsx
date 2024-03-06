@@ -76,7 +76,8 @@ const Rating = () => {
         </label>
       </div>
       {filteredResults.length > 0 ? (
-        <table>
+        <div className={styles.tableContainer}>
+          <table>
           <thead>
             <tr>
               <th>Test ID</th>
@@ -100,6 +101,7 @@ const Rating = () => {
             ))}
           </tbody>
         </table>
+          </div>
       ) : (
         <p className={styles.noResults}>No test results available.</p>
       )}

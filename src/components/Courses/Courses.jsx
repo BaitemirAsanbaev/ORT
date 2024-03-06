@@ -22,7 +22,7 @@ export default function Courses() {
   }, []);
 
   return (
-    <>\
+    <>
     <h2>Courses</h2>
     <div className={styles.list}>
       {courses.map((item) => (

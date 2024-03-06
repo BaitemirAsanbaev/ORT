@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getAllCourses } from "../../services/requests";
 import { createTest } from "../../services/TestService";
 import styles from "./CreateTest.module.scss";
-import QuestionEditor from "./QuestionEditor"; // Import the new component
+import QuestionEditor from "../../components/QuestionEditor/QuestionEditor"; // Import the new component
 
 export default function CreateTest() {
   const [title, setTitle] = useState("");
@@ -49,9 +49,9 @@ export default function CreateTest() {
 
   return (
     <div className={styles.createTest}>
-      <h2>Create Test</h2>
+      <h2>Новый тест</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title*:</label>
+        <label htmlFor="title">Название:</label>
         <input
           type="text"
           id="title"
@@ -60,16 +60,16 @@ export default function CreateTest() {
           maxLength={100}
           required
         />
-        <label htmlFor="description">Description*:</label>
+        <label htmlFor="description">Описание:</label>
         <textarea
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         />
-        <label htmlFor="course">Course*:</label>
+        <label htmlFor="course">Курс:</label>
         <select id="course" value={courseId} onChange={(e) => setCourseId(e.target.value)} required>
-          <option value="">Select a course</option>
+          <option value="">Выберите курс</option>
           {courses.map((course) => (
             <option key={course.id} value={course.id}>
               {course.title}
@@ -81,7 +81,7 @@ export default function CreateTest() {
       {/* Question and answer creation section */}
       <QuestionEditor questions={questions} setQuestions={setQuestions} />
 
-      <button onClick={handleSubmit} type="submit">Create Test</button>
+      <button onClick={handleSubmit} type="submit">Создать Тест</button>
     </div>
   );
 }
