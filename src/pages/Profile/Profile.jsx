@@ -96,7 +96,7 @@ const Profile = () => {
           </>
         )}
       </div>
-      <button onClick={() => localStorage.clear()}>ВЫйти</button>
+      <button onClick={() => {localStorage.clear(); window.location = "/login"}}>Выйти</button>
     </div>
   );
 };

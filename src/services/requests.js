@@ -11,6 +11,9 @@ export const login = async ({ email, password }) => {
     localStorage.setItem("email", res.data.email);
     localStorage.setItem("role", res.data.role);
     console.log(res.data);
+    if(res.data.access_token){
+      window.location = "/"
+    }
   } catch (e) {
     console.log(e);
   }

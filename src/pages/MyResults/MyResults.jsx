@@ -28,13 +28,9 @@ export default function MyResults() {
         <ul>
           {results.map((result, index) => (
             <li key={index} className={styles.resultItem}>
-              <h3 className={styles.resultTitle}>Test ID: {result.test}</h3>
-              <p className={styles.resultInfo}>Test Name: {result.test_name}</p>
-              <p className={styles.resultInfo}>Right Answers: {result.right_answers}</p>
-              <p className={styles.resultInfo}>Total Questions: {result.questions}</p>
-              <p className={styles.resultInfo}>Percentage: {result.percentage}</p>
-              <p className={styles.resultInfo}>User ID: {result.user}</p>
-              <p className={styles.resultInfo}>User Name: {result.user_name}</p>
+              <h3 className={styles.resultInfo}>{result.test_name}</h3>
+              <p className={styles.resultInfo}>Верные ответы: {result.right_answers} / {result.questions}</p>
+              <p className={styles.resultInfo}>Правильность: {result.percentage}%</p>
             </li>
           ))}
         </ul>

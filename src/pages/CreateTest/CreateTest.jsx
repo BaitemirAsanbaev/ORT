@@ -34,7 +34,7 @@ export default function CreateTest() {
 
     try {
       await createTest({ title, description, course: courseId, questions }, questions);
-      // Handle successful test creation (e.g., redirect)
+      
     } catch (e) {
       console.log(e);
     }

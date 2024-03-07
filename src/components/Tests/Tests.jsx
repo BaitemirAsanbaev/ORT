@@ -47,7 +47,11 @@ export default function Tests() {
           onSubmission={() => handleNextClick()}
         />
       ) : (
+        <>
+        
         <p>Вы прошли все тесты</p>
+        <Link to={"/"}>Вернуться</Link>
+        </>
       )}
       <div className={styles.navigationButtons}>
         {currentTestIndex > 0 && (

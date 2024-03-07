@@ -1,13 +1,14 @@
 // Test.js
 
-import React, { useState } from 'react';
-import Questions from '../Questions/Questions';
-import styles from './Tests.module.scss';
-import { submitTest } from '../../services/TestService';
+import React, { useState } from "react";
+import Questions from "../Questions/Questions";
+import styles from "./Tests.module.scss";
+import { submitTest } from "../../services/TestService";
 
 export default function Test({ data }) {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [rightAnswersCount, setRightAnswersCount] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleAnswerSelection = (questionId, answerId, isCorrect) => {
     setSelectedAnswers((prevSelectedAnswers) => ({
@@ -26,7 +27,8 @@ export default function Test({ data }) {
       test: data.id,
     };
     console.log(requestData);
-    submitTest(requestData)
+    submitTest(requestData);
+    setIsSubmitted(true);
   };
 
   return (
@@ -35,8 +37,14 @@ export default function Test({ data }) {
         {data.course_name} - {data.title}
       </h3>
       <p className={styles.testDescription}>{data.description}</p>
-      <Questions id={data.id} onAnswerSelect={handleAnswerSelection} />
-      <button onClick={handleSubmit}>Submit</button>
+      {isSubmitted ? (
+        <>Submitted</>
+      ) : (
+        <>
+          <Questions id={data.id} onAnswerSelect={handleAnswerSelection} />
+          <button onClick={handleSubmit}>Submit</button>
+        </>
+      )}
     </div>
   );
 }

@@ -2,6 +2,13 @@
 
 .resultsContainer {
     margin: 20px;
+    ul{
+      display: flex;
+      flex-wrap: wrap-reverse;
+      li{
+        margin: 10px;
+      }
+    }
   }
   
   .resultItem {
@@ -12,7 +19,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     list-style: none;
   }
-  
+  ul{}
   .resultTitle {
     font-size: 1.5rem;
     margin-bottom: 10px;
