@@ -23,7 +23,7 @@ export default function Courses() {
 
   return (
     <>
-    <h2>Courses</h2>
+    <h2>Курсы</h2>
     <div className={styles.list}>
       {courses.map((item) => (
         <Link to={`/course/${item.id}`} key={item.id} className={styles.course} style={{backgroundImage:`url(${bg})`}}>

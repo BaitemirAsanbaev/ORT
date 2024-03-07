@@ -45,18 +45,18 @@ const Profile = () => {
 
   return (
     <div className={styles.profileContainer}>
-      <h2>User Profile</h2>
+      <h2>Профиль</h2>
       <div>
         <p>
           <strong>Email:</strong> {userInfo.email}
         </p>
 
         <p>
-          <strong>Firstname:</strong> {userInfo.firstname}
+          <strong>Имя:</strong> {userInfo.firstname}
         </p>
 
         <p>
-          <strong>Lastname:</strong> {userInfo.lastname}
+          <strong>Фамилия:</strong> {userInfo.lastname}
         </p>
         {localStorage.getItem("role") === "Учитель" ? (
           <></>
@@ -96,7 +96,7 @@ const Profile = () => {
           </>
         )}
       </div>
-      <button onClick={() => localStorage.clear()}>Logout</button>
+      <button onClick={() => localStorage.clear()}>ВЫйти</button>
     </div>
   );
 };

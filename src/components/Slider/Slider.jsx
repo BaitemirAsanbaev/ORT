@@ -32,7 +32,7 @@ const NewsSlider = () => {
 
   return (
     <div className={styles.sliderContainer}>
-      <h2>Latest News</h2>
+      <h2>Новости</h2>
       <Slider {...settings}>
         {news.map((article, index) => (
           <div key={index} className={styles.sliderItem}>

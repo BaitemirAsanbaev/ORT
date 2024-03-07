@@ -42,7 +42,7 @@ const QuestionEditor = ({ questions, setQuestions }) => {
   const setCorrectAnswer = (questionIndex, answerIndex) => {
     const updatedQuestions = [...questions];
     updatedQuestions[questionIndex].answers.forEach((answer, i) => {
-      answer.isCorrect = i === answerIndex;
+      answer.correct = i === answerIndex;
     });
     setQuestions(updatedQuestions);
   };
@@ -66,8 +66,7 @@ const QuestionEditor = ({ questions, setQuestions }) => {
                 type="radio"
                 id={`answer-${questionIndex}-${answerIndex}`}
                 name={`question-${questionIndex}-answer`}
-                // Set checked attribute based on the isCorrect flag
-                checked={answer.isCorrect}
+                checked={answer.correct}
                 onChange={() => setCorrectAnswer(questionIndex, answerIndex)}
               />
               <label htmlFor={`answer-${questionIndex}-${answerIndex}`}>

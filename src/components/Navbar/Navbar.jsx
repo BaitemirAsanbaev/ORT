@@ -8,17 +8,17 @@ const Navbar = () => {
   const isStudent = role === 'Студент';
 
   const studentLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'My Results', path: '/my-results' },
-    { label: 'Rating', path: '/rating' },
-    { label: 'Profile', path: '/profile' }
+    { label: 'Главная', path: '/' },
+    { label: 'Мои результаты', path: '/my-results' },
+    { label: 'Рейтинг', path: '/rating' },
+    { label: 'Профиль', path: '/profile' }
   ];
 
   const teacherLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'Rating', path: '/rating' },
-    { label: 'Create test', path: '/create-test' },
-    { label: 'Profile', path: '/profile' }
+    { label: 'Главная', path: '/' },
+    { label: 'Рейтинг', path: '/rating' },
+    { label: 'Создать тест', path: '/create-test' },
+    { label: 'Профиль', path: '/profile' }
   ];
 
   const renderLinks = isStudent ? studentLinks : teacherLinks;
