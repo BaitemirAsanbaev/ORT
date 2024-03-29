@@ -10,19 +10,15 @@ export default function Tests() {
   const [currentTestIndex, setCurrentTestIndex] = useState(0);
   const [isResultsButtonDisabled, setIsResultsButtonDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isQuestionsAnswered, setIsQuestionsAnswered] = useState(false);
 
   useEffect(() => {
     async function fetchTests() {
       try {
         const res = await getTests(params.id);
         setIsLoading(false);
+        setTests(res || []);
         if (res.length === 0) {
-          setTests([{ message: "Вы прошли все тесты" }]);
-          setIsResultsButtonDisabled(false); // Enable "View Results" button
-        } else {
-          setTests(res || []);
+          setIsResultsButtonDisabled(false);
         }
       } catch (error) {
         console.error("Error fetching tests:", error);
@@ -33,12 +29,10 @@ export default function Tests() {
   }, [params.id]);
 
   const handleNextClick = () => {
-    setIsSubmitted(false);
-    setIsQuestionsAnswered(false);
     if (currentTestIndex < tests.length - 1) {
       setCurrentTestIndex((prevIndex) => prevIndex + 1);
     } else {
-      setIsResultsButtonDisabled(false); // Enable "View Results" button on the last test
+      setIsResultsButtonDisabled(false);
     }
   };
 
@@ -60,14 +54,7 @@ export default function Tests() {
           {tests[0].message ? (
             <div>{tests[0].message}</div>
           ) : (
-            <Test
-              data={tests[currentTestIndex]}
-              onSubmission={handleNextClick}
-              isSubmitted={isSubmitted}
-              setIsSubmitted={setIsSubmitted}
-              isQuestionsAnswered={isQuestionsAnswered}
-              setIsQuestionsAnswered={setIsQuestionsAnswered}
-            />
+            <Test data={tests[currentTestIndex]} onNext={handleNextClick} />
           )}
         </div>
       ) : (

@@ -1,5 +1,3 @@
-// Question.js
-
 import React, { useEffect, useState } from 'react';
 import { getQuestionAnswers } from '../../services/TestService';
 import styles from './Question.module.scss';
@@ -21,13 +19,12 @@ export default function Question({ data, onAnswerSelect }) {
   }, [data.id]);
 
   const handleAnswerClick = (answerId, isCorrect) => {
-    // Check if the answer has already been selected
     if (selectedAnswerId === answerId) {
       return;
     }
 
     setSelectedAnswerId(answerId);
-    onAnswerSelect(data.id, answerId, isCorrect);
+    onAnswerSelect(isCorrect);
   };
 
   return (
