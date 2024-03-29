@@ -1,5 +1,3 @@
-// Tests.js
-
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getTests } from "../../services/TestService";
@@ -11,21 +9,32 @@ export default function Tests() {
   const [tests, setTests] = useState([]);
   const [currentTestIndex, setCurrentTestIndex] = useState(0);
   const [isResultsButtonDisabled, setIsResultsButtonDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isQuestionsAnswered, setIsQuestionsAnswered] = useState(false);
 
   useEffect(() => {
     async function fetchTests() {
       try {
         const res = await getTests(params.id);
-        setTests(res || []);
-        setIsResultsButtonDisabled(res.length === 0); // Disable by default if there are no tests
+        setIsLoading(false);
+        if (res.length === 0) {
+          setTests([{ message: "Вы прошли все тесты" }]);
+          setIsResultsButtonDisabled(false); // Enable "View Results" button
+        } else {
+          setTests(res || []);
+        }
       } catch (error) {
         console.error("Error fetching tests:", error);
+        setIsLoading(false);
       }
     }
     fetchTests();
   }, [params.id]);
 
   const handleNextClick = () => {
+    setIsSubmitted(false);
+    setIsQuestionsAnswered(false);
     if (currentTestIndex < tests.length - 1) {
       setCurrentTestIndex((prevIndex) => prevIndex + 1);
     } else {
@@ -41,16 +50,30 @@ export default function Tests() {
 
   return (
     <div className={styles.testsContainer}>
-      {tests.length > 0 && currentTestIndex < tests.length ? (
-        <Test
-          data={tests[currentTestIndex]}
-          onSubmission={() => handleNextClick()}
-        />
+      {isLoading ? (
+        <>
+          <p>Loading...</p>
+          <Link to={"/"}>Вернуться</Link>
+        </>
+      ) : tests.length > 0 && currentTestIndex < tests.length ? (
+        <div>
+          {tests[0].message ? (
+            <div>{tests[0].message}</div>
+          ) : (
+            <Test
+              data={tests[currentTestIndex]}
+              onSubmission={handleNextClick}
+              isSubmitted={isSubmitted}
+              setIsSubmitted={setIsSubmitted}
+              isQuestionsAnswered={isQuestionsAnswered}
+              setIsQuestionsAnswered={setIsQuestionsAnswered}
+            />
+          )}
+        </div>
       ) : (
         <>
-        
-        <p>Вы прошли все тесты</p>
-        <Link to={"/"}>Вернуться</Link>
+          <p>Вы прошли все тесты</p>
+          <Link to={"/"}>Вернуться</Link>
         </>
       )}
       <div className={styles.navigationButtons}>

@@ -5,12 +5,20 @@ import Questions from "../Questions/Questions";
 import styles from "./Tests.module.scss";
 import { submitTest } from "../../services/TestService";
 
-export default function Test({ data }) {
+export default function Test({ data, isSubmitted, setIsSubmitted, isQuestionsAnswered, setIsQuestionsAnswered }) {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [rightAnswersCount, setRightAnswersCount] = useState(0);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [answeredCounter, setAnsweredCounter] = useState(1);
+  const [totalQuestions, setTotalQuestions] = useState(0);
 
   const handleAnswerSelection = (questionId, answerId, isCorrect) => {
+    setAnsweredCounter(answeredCounter + 1);
+    console.log(answeredCounter);
+    console.log(totalQuestions);
+    if (answeredCounter === totalQuestions) {
+      setIsQuestionsAnswered(true);
+      console.log("show");
+    }
     setSelectedAnswers((prevSelectedAnswers) => ({
       ...prevSelectedAnswers,
       [questionId]: { answerId, isCorrect },
@@ -41,8 +49,13 @@ export default function Test({ data }) {
         <>Submitted</>
       ) : (
         <>
-          <Questions id={data.id} onAnswerSelect={handleAnswerSelection} />
-          <button onClick={handleSubmit}>Submit</button>
+          <Questions
+            id={data.id}
+            onAnswerSelect={handleAnswerSelection}
+            handleSubmit={handleSubmit}
+            setTotalQuestions={setTotalQuestions}
+            isQuestionsAnswered={isQuestionsAnswered}
+          />
         </>
       )}
     </div>

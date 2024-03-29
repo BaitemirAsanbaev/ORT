@@ -3,6 +3,7 @@ import { getAllResults } from "../../services/requests";
 import styles from "./Rating.module.scss";
 
 const Rating = () => {
+  const [testResults, setTestResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [sortOrder, setSortOrder] = useState("default");
 
@@ -10,7 +11,7 @@ const Rating = () => {
     async function fetchTestResults() {
       try {
         const res = await getAllResults();
-        setFilteredResults(res);
+        setTestResults(res);
       } catch (error) {
         console.error("Error fetching test results:", error);
       }
@@ -21,8 +22,8 @@ const Rating = () => {
 
   useEffect(() => {
     // Apply sorting by percentage
-    const sorted = [...filteredResults].sort((a, b) => {
-      if (sortOrder === "default") return filteredResults;
+    const sorted = [...testResults].sort((a, b) => {
+      if (sortOrder === "default") return testResults;
 
       const percentageA = parseInt(a.percentage);
       const percentageB = parseInt(b.percentage);
@@ -31,7 +32,7 @@ const Rating = () => {
     });
 
     setFilteredResults(sorted);
-  }, [sortOrder]);
+  }, [sortOrder, testResults, ]);
 
   const handleSortOrderChange = (e) => {
     setSortOrder(e.target.value);
