@@ -51,7 +51,7 @@ export const createTest = async (test, questions) => {
               }
             );
             console.log(answerRes);
-            if(answerRes.status == 201                  ){
+            if(answerRes.status === 201){
               window.location = "/"
             } 
           }

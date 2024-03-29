@@ -3,16 +3,13 @@ import { getAllResults } from "../../services/requests";
 import styles from "./Rating.module.scss";
 
 const Rating = () => {
-  const [testResults, setTestResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [sortOrder, setSortOrder] = useState("default");
-  const [filterTestName, setFilterTestName] = useState(" ");
 
   useEffect(() => {
     async function fetchTestResults() {
       try {
         const res = await getAllResults();
-        setTestResults(res);
         setFilteredResults(res);
       } catch (error) {
         console.error("Error fetching test results:", error);
@@ -33,30 +30,23 @@ const Rating = () => {
       return sortOrder === "desc" ? percentageB - percentageA : percentageA - percentageB;
     });
 
-    // Use the functional form of setFilteredResults
     setFilteredResults(sorted);
   }, [sortOrder]);
-
-  const handleTestNameFilter = (e) => {
-    setFilterTestName(e.target.value);
-    filterResults(e.target.value);
-  };
-  
-  const filterResults = (testName) => {
-    const filtered = testResults.filter((result) =>
-      result.test_name.toLowerCase().includes(testName.toLowerCase())
-    );
-    setFilteredResults(filtered);
-  };
 
   const handleSortOrderChange = (e) => {
     setSortOrder(e.target.value);
   };
+
   return (
     <div className={styles.ratingContainer}>
       <h2>Результаты теста</h2>
       <div className={styles.controls}>
-        {/* ... (existing controls above) ... */}
+        {/* Sort Order Dropdown */}
+        <select value={sortOrder} onChange={handleSortOrderChange}>
+          <option value="default">Default</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
       </div>
       {filteredResults ? (
         filteredResults.length > 0 ? (
@@ -96,4 +86,4 @@ const Rating = () => {
   );
 };
 
-export default Rating
+export default Rating;
