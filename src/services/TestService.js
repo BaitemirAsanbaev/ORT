@@ -71,7 +71,7 @@ export const createTest = async (test, questions, video) => {
             );
             console.log(answerRes);
             if (answerRes.status === 201) {
-              // window.location = "/";
+              window.location = "/";
             }
           }
           createAnswer();
