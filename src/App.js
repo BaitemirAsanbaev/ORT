@@ -24,10 +24,10 @@ function App() {
             <Route index path="" element={<Home />} />
             <Route path="/rating" element={<Rating />} />
             <Route index path="/profile" element={<Profile />} />
+            <Route path="/course/:id" element={<Course />} />
 
             {localStorage.getItem("role") === "Студент" ? (
               <>
-                <Route path="/course/:id" element={<Course />} />
                 <Route path="/tests/:id" element={<TestPage />} />
                 <Route path="/my-results" element={<MyResults />} />
               </>
