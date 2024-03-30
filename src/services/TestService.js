@@ -98,6 +98,6 @@ export const submitTest = async ({ right_answers, test }) => {
     );
     return res.data;
   } catch (e) {
-    console.log(e);
+    return(e);
   }
 };

@@ -6,7 +6,7 @@ import { submitTest } from "../../services/TestService";
 export default function Test({ data, onNext }) {
   const [rightAnswersCount, setRightAnswersCount] = useState(0);
   // const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const [allowed, setAllowed] = useState("");
   // Function to handle answer selection
   const handleAnswerSelection = (isCorrect) => {
     if (isCorrect) {
@@ -15,14 +15,20 @@ export default function Test({ data, onNext }) {
   };
 
   // Function to handle form submission
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const requestData = {
       right_answers: rightAnswersCount,
       test: data.id,
     };
-    submitTest(requestData);
+    const res = await submitTest(requestData);
+    // console.log(res.response.status);
+    // console.log(res.response.data.message);
+    if (res?.response?.status === 400) {
+      setAllowed(res.response.data.message);
+    } else {
+      onNext(); // Move to the next test
+    }
     // setIsSubmitted(true);
-    onNext(); // Move to the next test
   };
 
   return (
@@ -31,12 +37,15 @@ export default function Test({ data, onNext }) {
         {data.course_name} - {data.title}
       </h3>
       <p className={styles.testDescription}>{data.description}</p>
-      
-        <Questions
-          id={data.id}
-          onAnswerSelect={handleAnswerSelection}
-          handleSubmit={handleSubmit}
-        />
-        </div>
+      <p className={styles.testDescription}>
+        {allowed}
+      </p>
+
+      <Questions
+        id={data.id}
+        onAnswerSelect={handleAnswerSelection}
+        handleSubmit={handleSubmit}
+      />
+    </div>
   );
 }

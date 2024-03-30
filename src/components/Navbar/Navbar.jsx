@@ -18,6 +18,7 @@ const Navbar = () => {
     { label: 'Главная', path: '/' },
     { label: 'Рейтинг', path: '/rating' },
     { label: 'Создать тест', path: '/create-test' },
+    { label: 'Создать курс', path: '/create-course' },
     { label: 'Профиль', path: '/profile' }
   ];
 

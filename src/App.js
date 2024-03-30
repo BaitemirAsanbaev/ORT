@@ -10,6 +10,8 @@ import Rating from "./pages/Rating/Rating";
 import MyResults from "./pages/MyResults/MyResults";
 import TestPage from "./pages/TestPage/TestPage";
 import CreateTest from "./pages/CreateTest/CreateTest";
+import CreateCourse from "./pages/CreateCourse/CreateCourse";
+import Footer from "./components/Footer/Footer";
 function App() {
   const isAuthed = localStorage.getItem("token");
   return (
@@ -17,6 +19,7 @@ function App() {
       {isAuthed ? (
         <>
           <Navbar />
+          <div className="content">
           <Routes>
             <Route index path="" element={<Home />} />
             <Route path="/rating" element={<Rating />} />
@@ -31,12 +34,14 @@ function App() {
             ) : (
               <>
                 <Route path="/create-test" element={<CreateTest />} />
-
+                <Route path="/create-course" element={<CreateCourse />} />
               </>
             )}
 
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </div>
+          <Footer />
         </>
       ) : (
         <>

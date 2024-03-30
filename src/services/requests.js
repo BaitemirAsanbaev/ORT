@@ -11,8 +11,8 @@ export const login = async ({ email, password }) => {
     localStorage.setItem("email", res.data.email);
     localStorage.setItem("role", res.data.role);
     console.log(res.data);
-    if(res.data.access_token){
-      window.location = "/"
+    if (res.data.access_token) {
+      window.location = "/";
     }
   } catch (e) {
     console.log(e);
@@ -44,6 +44,22 @@ export const getCourse = async (id) => {
   }
 };
 
+export const createCourse = async (title, description) => {
+  try {
+    const res = await axios.post(
+      api + "courses/create",
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      },
+      { title, description }
+      
+    );
+    return res.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const getVideos = async (id) => {
   try {
     const res = await axios.get(api + "courses/" + id + "/video/all");
@@ -52,7 +68,6 @@ export const getVideos = async (id) => {
     console.log(e);
   }
 };
-
 
 export const getProfile = async () => {
   try {
@@ -85,3 +100,16 @@ export const getMyResults = async () => {
     console.log(e);
   }
 };
+
+
+export const markVideo = async (id) => {
+  try {
+    const res = await axios.post(api + "videos/add-user/"+id, {}, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+    return res.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
