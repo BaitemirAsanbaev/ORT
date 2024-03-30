@@ -48,10 +48,11 @@ export const createCourse = async (title, description) => {
   try {
     const res = await axios.post(
       api + "courses/create",
+
+      { title, description },
       {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      },
-      { title, description }
+      }
       
     );
     return res.data;
