@@ -6,6 +6,7 @@ const Rating = () => {
   const [testResults, setTestResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [sortOrder, setSortOrder] = useState("default");
+  const [selectedTestName, setSelectedTestName] = useState("");
 
   useEffect(() => {
     async function fetchTestResults() {
@@ -21,9 +22,15 @@ const Rating = () => {
   }, []);
 
   useEffect(() => {
+    // Filter by test name
+    const filtered = testResults.filter(
+      (result) =>
+        selectedTestName === "" || result.test_name === selectedTestName
+    );
+
     // Apply sorting by percentage
-    const sorted = [...testResults].sort((a, b) => {
-      if (sortOrder === "default") return testResults;
+    const sorted = [...filtered].sort((a, b) => {
+      if (sortOrder === "default") return 0;
 
       const percentageA = parseInt(a.percentage);
       const percentageB = parseInt(b.percentage);
@@ -32,10 +39,14 @@ const Rating = () => {
     });
 
     setFilteredResults(sorted);
-  }, [sortOrder, testResults, ]);
+  }, [sortOrder, testResults, selectedTestName]);
 
   const handleSortOrderChange = (e) => {
     setSortOrder(e.target.value);
+  };
+
+  const handleTestNameChange = (e) => {
+    setSelectedTestName(e.target.value);
   };
 
   return (
@@ -48,7 +59,19 @@ const Rating = () => {
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
+
+        {/* Test Name Filter */}
+        <select value={selectedTestName} onChange={handleTestNameChange}>
+          <option value="">All Tests</option>
+          {/* Assuming test names are unique */}
+          {testResults.map((result) => (
+            <option key={result.test_name} value={result.test_name}>
+              {result.test_name}
+            </option>
+          ))}
+        </select>
       </div>
+
       {filteredResults ? (
         filteredResults.length > 0 ? (
           <div className={styles.tableContainer}>
