@@ -2,6 +2,13 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 50px;
+  .video{
+    display: flex;
+    flex-direction: column;
+    >*{
+      margin: 10px 0;
+    }
+  }
   button {
     background-color: #282828;
     max-width: 300px;

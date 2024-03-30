@@ -13,13 +13,32 @@ export const getTests = async (id) => {
   }
 };
 
-export const createTest = async (test, questions) => {
-  console.log(questions);
+export const createTest = async (test, questions, video) => {
   try {
     const testRes = await axios.post(api + "tests/create", test, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
-
+    const formData=new FormData()
+    const videoObj = {
+      ...video,
+      test: testRes.data.id,
+    }
+    for (var key in videoObj) {
+      formData.append(key, videoObj[key]);
+    }
+    console.log(formData);
+    try {
+      const res = await axios.post(
+        api + "videos/video/create",
+        formData,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
     questions.forEach((question) => {
       async function createQuestion() {
         const questionRes = await axios.post(
@@ -51,9 +70,9 @@ export const createTest = async (test, questions) => {
               }
             );
             console.log(answerRes);
-            if(answerRes.status === 201){
-              window.location = "/"
-            } 
+            if (answerRes.status === 201) {
+              // window.location = "/";
+            }
           }
           createAnswer();
         });
@@ -98,6 +117,6 @@ export const submitTest = async ({ right_answers, test }) => {
     );
     return res.data;
   } catch (e) {
-    return(e);
+    return e;
   }
 };

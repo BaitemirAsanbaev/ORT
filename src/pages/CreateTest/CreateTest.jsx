@@ -9,7 +9,9 @@ export default function CreateTest() {
   const [description, setDescription] = useState("");
   const [courseId, setCourseId] = useState("");
   const [courses, setCourses] = useState([]);
-  // State for questions and answers
+  const [video, setVideo] = useState(null);
+  const [videoTitle, setVideoTitle] = useState("");
+  const [videoDescription, setVideoDescription] = useState("");
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
@@ -31,10 +33,12 @@ export default function CreateTest() {
     if (!validateTest()) {
       return;
     }
-
     try {
-      await createTest({ title, description, course: courseId, questions }, questions);
-      
+      await createTest(
+        { title, description, course: courseId, questions },
+        questions,
+        { title: videoTitle, description: videoDescription, video, course:courseId }
+      );
     } catch (e) {
       console.log(e);
     }
@@ -45,12 +49,37 @@ export default function CreateTest() {
     // ... your validation logic
     return true; // Replace with actual validation logic
   };
-  
 
   return (
     <div className={styles.createTest}>
+      <h2>Видео к тесту</h2>
+
+      <form className={styles.video} encType="multipart/form-data">
+        <input
+          type="file"
+          accept=".mp4"
+          onChange={(e) => setVideo(e.target.files[0])}
+        />
+        <label htmlFor="videoTitle">Заголовок видео:</label>
+        <input
+          type="text"
+          id="videoTitle"
+          value={videoTitle}
+          onChange={(e) => setVideoTitle(e.target.value)}
+          maxLength={100}
+          required
+        />
+        <label htmlFor="videoDescription">Описание видео:</label>
+        <textarea
+          id="videoDescription"
+          value={videoDescription}
+          onChange={(e) => setVideoDescription(e.target.value)}
+          required
+        />
+      </form>
       <h2>Новый тест</h2>
-      <form onSubmit={handleSubmit}>
+
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label htmlFor="title">Название:</label>
         <input
           type="text"
@@ -68,7 +97,12 @@ export default function CreateTest() {
           required
         />
         <label htmlFor="course">Курс:</label>
-        <select id="course" value={courseId} onChange={(e) => setCourseId(e.target.value)} required>
+        <select
+          id="course"
+          value={courseId}
+          onChange={(e) => setCourseId(e.target.value)}
+          required
+        >
           <option value="">Выберите курс</option>
           {courses.map((course) => (
             <option key={course.id} value={course.id}>
@@ -81,7 +115,9 @@ export default function CreateTest() {
       {/* Question and answer creation section */}
       <QuestionEditor questions={questions} setQuestions={setQuestions} />
 
-      <button onClick={handleSubmit} type="submit">Создать Тест</button>
+      <button onClick={handleSubmit} type="submit">
+        Создать Тест
+      </button>
     </div>
   );
 }
