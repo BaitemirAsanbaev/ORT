@@ -1,5 +1,3 @@
-// CreateProfile.js
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './CreateProfile.module.scss';
@@ -13,7 +11,7 @@ export default function CreateProfile() {
     language: '',
     _class: '',
     age: '',
-    sex: '',
+    gender: '',
     phone: '',
     school: '',
     university: '',
@@ -36,7 +34,7 @@ export default function CreateProfile() {
       navigate('/students'); // Navigate to '/students' page
       localStorage.removeItem("currentstudent")
     } catch (error) {
-      console.error('Registration failed', error);
+      console.error(error);
       // Handle registration failure
     }
   };
@@ -47,13 +45,17 @@ export default function CreateProfile() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Язык:</label>
-          <input
-            type="text"
+          <select
             name="language"
             value={formData.language}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Выберите язык</option>
+            <option value="Кыргызский">Кыргызский</option>
+            <option value="Русский">Русский</option>
+            <option value="Английский">Английский</option>
+          </select>
         </div>
         <div>
           <label>Класс:</label>
@@ -77,13 +79,16 @@ export default function CreateProfile() {
         </div>
         <div>
           <label>Пол:</label>
-          <input
-            type="text"
-            name="sex"
-            value={formData.sex}
+          <select
+            name="gender"
+            value={formData.gender}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Выберите пол</option>
+            <option value="Мужской">Мужской</option>
+            <option value="Женский">Женский</option>
+          </select>
         </div>
         <div>
           <label>Телефон:</label>

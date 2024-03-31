@@ -1,0 +1,39 @@
+/* Students.module.scss */
+
+.students-container {
+    margin-top: 20px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .student-card {
+    flex: 500px 0 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .student-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .student-info {
+    margin-top: 5px;
+  }
+  
+  .student-info-item {
+    margin-bottom: 5px;
+  }
+  
+  .student-info-label {
+    font-weight: bold;
+  }
+  
+  .student-info-value {
+    margin-left: 5px;
+  }
+  

@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { createCourse } from "../../services/requests";
 import styles from './CreateCourse.module.scss'
+import { useNavigate } from "react-router-dom";
 export default function CreateCourse() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
+const navigate = useNavigate()
   async function handleSubmit() {
     try {
       const res = await createCourse(title, description);
       console.log(res);
-      // Optionally, you can clear the input fields after submission
       setTitle("");
       setDescription("");
+      navigate("/")
     } catch (e) {
       console.log(e);
     }

@@ -55,6 +55,7 @@ export const createCourse = async (title, description) => {
       }
       
     );
+    alert(`Курс - ${res.data.title} создан`)
     return res.data;
   } catch (e) {
     console.log(e);
