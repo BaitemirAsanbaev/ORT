@@ -15,7 +15,7 @@ export const login = async ({ email, password }) => {
       window.location = "/";
     }
   } catch (e) {
-    console.log(e);
+    alert(e.response.data.message);
   }
 };
 export const getNews = async () => {
