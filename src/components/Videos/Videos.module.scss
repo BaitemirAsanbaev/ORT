@@ -14,7 +14,12 @@
     border-radius: 8px;
     border: 1px solid #9b9b9b;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
   }
+  .video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+  
   
   .videoInfo {
     margin-bottom: 10px;

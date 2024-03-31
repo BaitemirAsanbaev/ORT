@@ -26,8 +26,12 @@ export default function Video({ data, markedAsWatched, setMarkedAsWatched }) {
 
     video.addEventListener("timeupdate", updateWatchedPercentage);
 
+    // Disable right-click context menu
+    video.addEventListener("contextmenu", handleContextMenu);
+
     return () => {
       video.removeEventListener("timeupdate", updateWatchedPercentage);
+      video.removeEventListener("contextmenu", handleContextMenu);
     };
   }, []);
 
@@ -36,6 +40,10 @@ export default function Video({ data, markedAsWatched, setMarkedAsWatched }) {
       markAsWatched();
     }
   }, [watchedPercentage, markedAsWatched, markAsWatched]);
+
+  const handleContextMenu = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <div className={styles.videoCont}>

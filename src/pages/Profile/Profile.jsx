@@ -63,35 +63,31 @@ const Profile = () => {
         ) : (
           <>
             <p>
-              <strong>Class:</strong> {profileData._class}
+              <strong>Класс:</strong> {profileData._class}
             </p>
 
             <p>
-              <strong>Age:</strong> {profileData.age}
+              <strong>Возраст:</strong> {profileData.age}
             </p>
 
             <p>
-              <strong>Sex:</strong> {profileData.sex}
+              <strong>Пол:</strong> {profileData.sex}
             </p>
 
             <p>
-              <strong>Phone:</strong> {profileData.phone}
+              <strong>Телефон:</strong> {profileData.phone}
             </p>
 
             <p>
-              <strong>School:</strong> {profileData.school}
+              <strong>Школа:</strong> {profileData.school}
             </p>
 
             <p>
-              <strong>University:</strong> {profileData.university}
+              <strong>Университет:</strong> {profileData.university}
             </p>
 
             <p>
-              <strong>Specialization:</strong> {profileData.specialization}
-            </p>
-
-            <p>
-              <strong>User ID:</strong> {profileData.user}
+              <strong>Специализация:</strong> {profileData.specialization}
             </p>
           </>
         )}

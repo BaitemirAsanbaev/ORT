@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 import logo from '../../assets/logo.png';
 
@@ -24,11 +24,11 @@ const Navbar = () => {
   ];
 
   const renderLinks = isStudent ? studentLinks : teacherLinks;
-
+const navigate = useNavigate()
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-        <img src={logo} alt="Logo" />
+        <img src={logo} alt="Logo" onClick={()=>navigate("/")}/>
       </div>
       <ul className={styles.navLinks}>
         {renderLinks.map((link, index) => (
