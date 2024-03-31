@@ -35,7 +35,9 @@ const Rating = () => {
       const percentageA = parseInt(a.percentage);
       const percentageB = parseInt(b.percentage);
 
-      return sortOrder === "desc" ? percentageB - percentageA : percentageA - percentageB;
+      return sortOrder === "desc"
+        ? percentageB - percentageA
+        : percentageA - percentageB;
     });
 
     setFilteredResults(sorted);
@@ -60,15 +62,19 @@ const Rating = () => {
           <option value="desc">Descending</option>
         </select>
 
-        {/* Test Name Filter */}
         <select value={selectedTestName} onChange={handleTestNameChange}>
           <option value="">All Tests</option>
-          {/* Assuming test names are unique */}
-          {testResults.map((result) => (
-            <option key={result.test_name} value={result.test_name}>
-              {result.test_name}
-            </option>
-          ))}
+          {testResults
+            .filter(
+              (result, index, self) =>
+                self.findIndex((t) => t.test_name === result.test_name) ===
+                index
+            ) // Remove duplicates
+            .map((result) => (
+              <option key={result.test_name} value={result.test_name}>
+                {result.test_name}
+              </option>
+            ))}
         </select>
       </div>
 

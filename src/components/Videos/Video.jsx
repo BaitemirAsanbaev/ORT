@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./Videos.module.scss";
 import { markVideo } from "../../services/requests";
 
-export default function Video({ data }) {
+export default function Video({ data, markedAsWatched, setMarkedAsWatched }) {
   const [watchedPercentage, setWatchedPercentage] = useState(0);
-  const [markedAsWatched, setMarkedAsWatched] = useState(false);
   const videoRef = useRef(null);
 
   const markAsWatched = useCallback(async () => {
     try {
       await markVideo(data.id);
       setMarkedAsWatched(true);
+      console.log("watched");
     } catch (error) {
       console.error("Error", error);
     }
@@ -38,7 +38,7 @@ export default function Video({ data }) {
   }, [watchedPercentage, markedAsWatched, markAsWatched]);
 
   return (
-    <div>
+    <div className={styles.videoCont}>
       <div className={styles.videoInfo}>
         <h3 className={styles.videoTitle}>
           {data.course_name} - {data.title}
@@ -47,8 +47,7 @@ export default function Video({ data }) {
       </div>
       <video
         className={styles.video}
-        width="640"
-        height="360"
+        width="440"
         controls
         ref={videoRef}
       >

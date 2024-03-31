@@ -63,7 +63,9 @@ export const createCourse = async (title, description) => {
 
 export const getVideos = async (id) => {
   try {
-    const res = await axios.get(api + "courses/" + id + "/video/all");
+    const res = await axios.get(api + "courses/" + id + "/video/all",{
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
     return res.data;
   } catch (e) {
     console.log(e);

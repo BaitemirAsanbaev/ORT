@@ -5,7 +5,11 @@
     max-width: 700px;
     margin: 0 auto;
   }
-  
+  .videoCont{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+  }
   .video {
     border-radius: 8px;
     border: 1px solid #9b9b9b;
@@ -15,10 +19,10 @@
   .videoInfo {
     margin-bottom: 10px;
     padding: 10px;
+    max-width: 500px;
   }
   
   .videoTitle {
-    font-size: 1.5rem;
     margin-bottom: 10px;
     color: #333;
   }

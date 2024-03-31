@@ -6,7 +6,6 @@ export const getTests = async (id) => {
     const res = await axios.get(api + "courses/" + id + "/test/all", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
-    console.log(res.data);
     return res.data;
   } catch (e) {
     console.log(e);

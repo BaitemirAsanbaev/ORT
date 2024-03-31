@@ -12,6 +12,9 @@ import TestPage from "./pages/TestPage/TestPage";
 import CreateTest from "./pages/CreateTest/CreateTest";
 import CreateCourse from "./pages/CreateCourse/CreateCourse";
 import Footer from "./components/Footer/Footer";
+import CreateStudent from "./pages/CreateStudent/CreateStudent";
+import CreateProfile from "./pages/CreateProfile/CreateProfile";
+import Students from "./pages/Students/Students";
 function App() {
   const isAuthed = localStorage.getItem("token");
   return (
@@ -24,17 +27,21 @@ function App() {
             <Route index path="" element={<Home />} />
             <Route path="/rating" element={<Rating />} />
             <Route index path="/profile" element={<Profile />} />
-            <Route path="/course/:id" element={<Course />} />
+            {/* <Route path="/course/:id" element={<Course />} /> */}
 
             {localStorage.getItem("role") === "Студент" ? (
               <>
-                <Route path="/tests/:id" element={<TestPage />} />
+                <Route path="/course/:id" element={<TestPage />} />
                 <Route path="/my-results" element={<MyResults />} />
               </>
             ) : (
               <>
                 <Route path="/create-test" element={<CreateTest />} />
                 <Route path="/create-course" element={<CreateCourse />} />
+                <Route path="/create-student" element={<CreateStudent />} />
+                <Route path="/create-profile" element={<CreateProfile />} />
+                <Route path="/course/:id" element={<TestPage />} />
+                <Route path="/students" element={<Students />} />
               </>
             )}
 

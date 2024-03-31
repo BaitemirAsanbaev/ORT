@@ -1,0 +1,59 @@
+/* VideoTest.module.scss */
+
+.videoTestContainer {
+    margin: 0 auto;
+    max-width: 900px;
+
+  }
+  
+  .testTitle {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .testDescription {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .questionContainer {
+    margin-bottom: 20px;
+  }
+  
+  .questionTitle {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .answerList {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+  }
+  
+  .answerItem {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .selectedAnswer {
+    background-color: #323232;
+    color: white;
+  }
+  .submitButton {
+    background-color: #323232;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submitButton:hover {
+    background-color: #0056b3;
+  }
+  

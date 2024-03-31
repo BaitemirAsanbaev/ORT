@@ -1,0 +1,48 @@
+// CreateStudent.module.scss
+
+.create-student-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .create-student-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .create-student-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .create-student-container form > div {
+    margin-bottom: 15px;
+  }
+  
+  .create-student-container form label {
+    font-weight: bold;
+  }
+  
+  .create-student-container form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .create-student-container form button {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .create-student-container form button:hover {
+    background-color: #0056b3;
+  }
+  
