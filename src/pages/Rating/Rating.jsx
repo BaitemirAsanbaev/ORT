@@ -84,7 +84,6 @@ const Rating = () => {
             <table>
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Название теста</th>
                   <th>Правильные ответы</th>
                   <th>Количество вопросов</th>
@@ -95,7 +94,6 @@ const Rating = () => {
               <tbody>
                 {filteredResults.map((result) => (
                   <tr key={result.id}>
-                    <td>{result.test}</td>
                     <td>{result.test_name}</td>
                     <td>{result.right_answers}</td>
                     <td>{result.questions}</td>

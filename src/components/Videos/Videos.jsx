@@ -8,7 +8,7 @@ import Video from "./Video";
 
 export default function Videos() {
     const params = useParams();
-    const [videos, setVideos] = useState([]);
+    const [videos, setVideos] = useState([]); 
 
     useEffect(() => {
       async function fetchVideos() {

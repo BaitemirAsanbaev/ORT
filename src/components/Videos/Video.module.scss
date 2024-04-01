@@ -1,0 +1,64 @@
+.videoCont {
+    margin-bottom: 20px;
+  }
+  
+  .videoInfo {
+    margin-bottom: 10px;
+  }
+  
+  .videoTitle {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .videoDescription {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .video {
+    width: 600px;
+    height: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Custom styles for video controls */
+  .video::-webkit-media-controls-panel {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+  }
+  
+  .video::-webkit-media-controls-play-button {
+    color: #fff;
+  }
+  
+  .video::-webkit-media-controls-volume-slider {
+    width: 80px;
+  }
+  
+  /* Custom styles for progress bar */
+  .video::-webkit-media-controls-timeline {
+    height: 5px;
+  }
+  
+  .video::-webkit-media-controls-timeline-container {
+    height: 5px;
+  }
+  
+  .video::-webkit-media-controls-current-time-display,
+  .video::-webkit-media-controls-time-remaining-display {
+    color: #fff;
+    font-size: 12px;
+  }
+  
+  .video::-webkit-media-controls-seek-back-button,
+  .video::-webkit-media-controls-seek-forward-button {
+    color: #fff;
+  }
+  
+  /* Styling for fullscreen button */
+  .video::-webkit-media-controls-fullscreen-button {
+    color: #fff;
+  }
+  

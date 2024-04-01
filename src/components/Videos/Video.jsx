@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import styles from "./Videos.module.scss";
+import styles from "./Video.module.scss";
 import { markVideo } from "../../services/requests";
 
 export default function Video({ data, markedAsWatched, setMarkedAsWatched }) {
