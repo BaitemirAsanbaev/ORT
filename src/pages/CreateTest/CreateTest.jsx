@@ -55,11 +55,7 @@ export default function CreateTest() {
       <h2>Видео к тесту</h2>
 
       <form className={styles.video} encType="multipart/form-data">
-        <input
-          type="file"
-          accept=".mp4"
-          onChange={(e) => setVideo(e.target.files[0])}
-        />
+        
         <label htmlFor="videoTitle">Заголовок видео:</label>
         <input
           type="text"
@@ -68,6 +64,13 @@ export default function CreateTest() {
           onChange={(e) => setVideoTitle(e.target.value)}
           maxLength={100}
           required
+        />
+        <label htmlFor="video">Загрузите видео</label>
+        <input
+        id="video"
+          type="file"
+          accept=".mp4"
+          onChange={(e) => setVideo(e.target.files[0])}
         />
         <label htmlFor="videoDescription">Описание видео:</label>
         <textarea
@@ -115,7 +118,7 @@ export default function CreateTest() {
       {/* Question and answer creation section */}
       <QuestionEditor questions={questions} setQuestions={setQuestions} />
 
-      <button onClick={handleSubmit} type="submit">
+      <button className={styles.createBtn} onClick={handleSubmit} type="submit">
         Создать Тест
       </button>
     </div>

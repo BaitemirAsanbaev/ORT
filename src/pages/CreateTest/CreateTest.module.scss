@@ -9,8 +9,11 @@
       margin: 10px 0;
     }
   }
+  .createBtn{
+    background-color: rgb(38, 174, 38);
+  }
   button {
-    background-color: #6b92ff;
+    background-color: #2145d9;
     max-width: 300px;
     margin: 5px auto;
     color: #fff;
@@ -39,17 +42,8 @@
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      
     }
-
-    select {
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5 10a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1v-8a1 1 0 011-1zM15 10a1 1 0 011 1v8a1 1 0 01-1 1h-4a1 1 0 01-1-1v-8a1 1 0 011-1z' clip-rule='evenodd'%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      background-size: 14px;
-    }
-
-    
   }
 
   @media (max-width: 767px) {

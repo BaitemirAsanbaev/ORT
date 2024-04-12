@@ -92,7 +92,7 @@ const QuestionEditor = ({ questions, setQuestions }) => {
               Добавить вариант
             </button>
           )}
-          <button type="button" onClick={() => removeQuestion(questionIndex)}>
+          <button type="button" className={styles.removeBtn} onClick={() => removeQuestion(questionIndex)}>
             Удалить вопрос
           </button>
         </div>
