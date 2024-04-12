@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './QuestionEditor.module.scss'
+
 const QuestionEditor = ({ questions, setQuestions }) => {
   const handleQuestionChange = (index, event) => {
     const updatedQuestions = [...questions];
@@ -32,8 +33,8 @@ const QuestionEditor = ({ questions, setQuestions }) => {
   };
 
   const removeAnswerOption = (questionIndex, answerIndex) => {
-    if (questionIndex.answers.length > 4) {
-      const updatedQuestions = [...questions];
+    const updatedQuestions = [...questions];
+    if (updatedQuestions[questionIndex].answers.length > 1) {
       updatedQuestions[questionIndex].answers.splice(answerIndex, 1);
       setQuestions(updatedQuestions);
     }
@@ -49,7 +50,7 @@ const QuestionEditor = ({ questions, setQuestions }) => {
 
   return (
     <div className={styles.QuestionEditor}>
-      <h2>Вопросы</h2>
+      {questions.length > 0 ? <h2>Вопросы</h2> : <></>}
       {questions.map((question, questionIndex) => (
         <div key={questionIndex}>
           <label htmlFor={`question-${questionIndex}`}>Вопрос:</label>
