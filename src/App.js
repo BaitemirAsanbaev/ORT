@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
-import Course from "./pages/Course/Course";
+// import Course from "./pages/Course/Course";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/404/404";
 import Navbar from "./components/Navbar/Navbar";
@@ -15,9 +15,21 @@ import Footer from "./components/Footer/Footer";
 import CreateStudent from "./pages/CreateStudent/CreateStudent";
 import CreateProfile from "./pages/CreateProfile/CreateProfile";
 import Students from "./pages/Students/Students";
+// import car_radio from './car_radio.mp3'
+// import top_cover from './cover.png'
 function App() {
   const isAuthed = localStorage.getItem("token");
+  // const music = {
+  //   title:"Car radio",
+  //   author:"Twenty one pilots",
+  //   cover:top_cover,
+  //   music:car_radio,
+  //   id:1
+  // }
   return (
+    // <div>
+    //   <Player music={music} liked={[1,2,3]}/>
+    // </div>
     <div className="App">
       {isAuthed ? (
         <>
