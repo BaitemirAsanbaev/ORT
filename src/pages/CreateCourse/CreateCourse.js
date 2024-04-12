@@ -20,18 +20,23 @@ const navigate = useNavigate()
 
   return (
     <div className={styles.CreateCourse}>
+      <h1>Создать курс</h1>
+      <label htmlFor="coursetitle">Название курса</label>
       <input
+      id="coursetitle"
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Course Title"
+        placeholder="Напишите название курса"
       />
+      <label htmlFor="coursedes">Описание курса</label>
       <textarea
+      id="coursedes"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Course Description"
+        placeholder="Напишите описание курса"
       ></textarea>
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>Создать</button>
     </div>
   );
 }

@@ -57,13 +57,13 @@ const Rating = () => {
       <div className={styles.controls}>
         {/* Sort Order Dropdown */}
         <select value={sortOrder} onChange={handleSortOrderChange}>
-          <option value="default">Default</option>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
+          <option value="default">По умолчанию</option>
+          <option value="asc">Наименьшие</option>
+          <option value="desc">Наибольшие</option>
         </select>
 
         <select value={selectedTestName} onChange={handleTestNameChange}>
-          <option value="">All Tests</option>
+          <option value="">Все тесты</option>
           {testResults
             .filter(
               (result, index, self) =>
@@ -105,10 +105,10 @@ const Rating = () => {
             </table>
           </div>
         ) : (
-          <p className={styles.noResults}>No test results available.</p>
+          <p className={styles.noResults}>Нет доступных результатов теста</p>
         )
       ) : (
-        <p className={styles.loading}>Loading...</p>
+        <p className={styles.loading}>Загрузка...</p>
       )}
     </div>
   );

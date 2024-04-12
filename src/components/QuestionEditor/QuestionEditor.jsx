@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './QuestionEditor.module.scss'
+import styles from "./QuestionEditor.module.scss";
 
 const QuestionEditor = ({ questions, setQuestions }) => {
   const handleQuestionChange = (index, event) => {
@@ -10,7 +10,8 @@ const QuestionEditor = ({ questions, setQuestions }) => {
 
   const handleAnswerChange = (questionIndex, answerIndex, event) => {
     const updatedQuestions = [...questions];
-    updatedQuestions[questionIndex].answers[answerIndex].answer = event.target.value;
+    updatedQuestions[questionIndex].answers[answerIndex].answer =
+      event.target.value;
     setQuestions(updatedQuestions);
   };
 
@@ -55,6 +56,7 @@ const QuestionEditor = ({ questions, setQuestions }) => {
         <div key={questionIndex}>
           <label htmlFor={`question-${questionIndex}`}>Вопрос:</label>
           <input
+            placeholder="Напишите вопрос"
             type="text"
             id={`question-${questionIndex}`}
             value={question.question}
@@ -74,25 +76,38 @@ const QuestionEditor = ({ questions, setQuestions }) => {
                 Ответ {answerIndex + 1}:
               </label>
               <input
+                placeholder="Напишите вариант ответа"
                 type="text"
                 id={`answer-${questionIndex}-${answerIndex}-text`}
                 value={answer.answer}
-                onChange={(e) => handleAnswerChange(questionIndex, answerIndex, e)}
+                onChange={(e) =>
+                  handleAnswerChange(questionIndex, answerIndex, e)
+                }
                 required
               />
               {answerIndex + 1 < question.answers.length && (
-                <button type="button" onClick={() => removeAnswerOption(questionIndex, answerIndex)}>
+                <button
+                  type="button"
+                  onClick={() => removeAnswerOption(questionIndex, answerIndex)}
+                >
                   Удалить вариант
                 </button>
               )}
             </div>
           ))}
           {question.answers.length < 6 && (
-            <button type="button" onClick={() => addAnswerOption(questionIndex)}>
+            <button
+              type="button"
+              onClick={() => addAnswerOption(questionIndex)}
+            >
               Добавить вариант
             </button>
           )}
-          <button type="button" className={styles.removeBtn} onClick={() => removeQuestion(questionIndex)}>
+          <button
+            type="button"
+            className={styles.removeBtn}
+            onClick={() => removeQuestion(questionIndex)}
+          >
             Удалить вопрос
           </button>
         </div>

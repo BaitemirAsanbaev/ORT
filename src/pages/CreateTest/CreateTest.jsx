@@ -59,6 +59,7 @@ export default function CreateTest() {
         <label htmlFor="videoTitle">Заголовок видео:</label>
         <input
           type="text"
+          placeholder="Напишите заголовок видео"
           id="videoTitle"
           value={videoTitle}
           onChange={(e) => setVideoTitle(e.target.value)}
@@ -74,6 +75,8 @@ export default function CreateTest() {
         />
         <label htmlFor="videoDescription">Описание видео:</label>
         <textarea
+        
+        placeholder="Напишите описание видео"
           id="videoDescription"
           value={videoDescription}
           onChange={(e) => setVideoDescription(e.target.value)}
@@ -85,6 +88,7 @@ export default function CreateTest() {
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label htmlFor="title">Название:</label>
         <input
+          placeholder="Напишите название теста"
           type="text"
           id="title"
           value={title}
@@ -94,6 +98,7 @@ export default function CreateTest() {
         />
         <label htmlFor="description">Описание:</label>
         <textarea
+        placeholder="Напишите описание теста"
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}

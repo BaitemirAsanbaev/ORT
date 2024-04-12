@@ -23,7 +23,7 @@ export default function MyResults() {
 
   return (
     <div className={styles.resultsContainer}>
-      <h2>My Results</h2>
+      <h2>Мои результаты</h2>
       {results.length > 0 ? (
         <ul>
           {results.map((result, index) => (
@@ -35,7 +35,7 @@ export default function MyResults() {
           ))}
         </ul>
       ) : (
-        <p className={styles.noResults}>No results available.</p>
+        <p className={styles.noResults}>Нет доступных результатов</p>
       )}
     </div>
   );
