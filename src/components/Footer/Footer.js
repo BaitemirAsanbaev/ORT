@@ -7,7 +7,7 @@ export default function Footer() {
         <a href='mailto:eduon.llc@gmail.com'>eduon.llc@gmail.com</a>
         <a href='https://go.2gis.com/zac0j'>Location: Bishkek 12А</a>
         <a href='https://www.instagram.com/'>Instagram</a>
-        <a href='https://t.me/ariari_004'>Telegram</a>
+        <a href='https://t.me/ortga_tuura_daiardanuu'>Telegram</a>
     </div>
   )
 }

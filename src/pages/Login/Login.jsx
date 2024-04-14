@@ -24,10 +24,10 @@ const Login = () => {
 
   return (
     <div className={classes.Login}>
-      <h2>Login</h2>
+      <h2>Добро пожаловать</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Email:
+          Почта:
           <input
             type="text"
             value={email}
@@ -37,7 +37,7 @@ const Login = () => {
         </label>
         <br />
         <label>
-          Password:
+          Пароль:
           <input
             type="password"
             value={password}
@@ -46,7 +46,7 @@ const Login = () => {
           />
         </label>
         <br />
-        <button type="submit">Login</button>
+        <button type="submit">Войти</button>
       </form>
     </div>
   );

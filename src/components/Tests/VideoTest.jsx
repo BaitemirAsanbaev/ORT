@@ -22,6 +22,7 @@ const VideoTest = ({ videoData, onSubmit }) => {
     for (const question of videoData.test.questions) {
       const selectedAnswerId = selectedAnswers[question.id];
       const correctAnswer = question.answers.find((answer) => answer.correct);
+      console.log(question);
       if (selectedAnswerId === correctAnswer.id) {
         rightAnswers++;
       }
@@ -50,6 +51,7 @@ const VideoTest = ({ videoData, onSubmit }) => {
             {videoData.test.questions.map((question) => (
               <div key={question.id} className={styles.questionContainer}>
                 <b className={styles.questionTitle}>{question.title}</b>
+                <img className={styles.questionPhoto} src={question.photo} width={200} alt={question.title}/>
                 <ul className={styles.answerList}>
                   {question.answers.map((answer) => (
                     <li
@@ -62,6 +64,8 @@ const VideoTest = ({ videoData, onSubmit }) => {
                       onClick={() => handleAnswerClick(question.id, answer.id)}
                     >
                       {answer.title}
+                      
+                <img className={styles.answerPhoto} src={answer.photo} width={200} alt="image not available"/>
                     </li>
                   ))}
                 </ul>
