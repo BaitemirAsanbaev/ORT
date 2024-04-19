@@ -1,11 +1,11 @@
-import { login } from '../../services/requests';
-import classes from './Login.module.scss'
-import React, { useState } from 'react';
+import { login } from "../../services/requests";
+import classes from "./Login.module.scss";
+import React, { useState } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -14,18 +14,22 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login({email, password})
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // You can implement authentication logic here
+    try {
+      const res = await login({ email, password });
+      console.log(res);
+      setError(res);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <div className={classes.Login}>
       <h2>Добро пожаловать</h2>
       <form onSubmit={handleSubmit}>
+        <div className={classes.error}>{error}</div>
         <label>
           Почта:
           <input
